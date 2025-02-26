@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Sayohat</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        header {
+            width: 100%;
+            height: 775px;
+            background-image: url('{% static "img/tour.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <nav class="container">
+
+            <a href="{% url 'home' %}">
+
+                <img src="{% static 'img/logo.png' %}" alt="">
+
+            </a>
+
+            <ul>
+
+                <li>
+
+                    <a href="{% url 'blogs' %}">Bloglar</a>
+
+                </li>
+
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'add_blog' %}">Blog Qo'shish</a></li>
+                <li>
+
+                    <a href="{% url 'change_user' %}">Profil</a>
+
+                </li>
+                {% else %}
+                <li>
+
+                    <a href="{% url 'register' %}">Registratsiya qilish</a>
+
+                </li>
+
+                <li>
+
+                    <a href="{% url 'login' %}">Profilga kirish</a>
+
+                </li>
+                {% endif %}
+
+            </ul>
+
+        </nav>
+
+        <div class="search container">
+
+            <button type="submit" class="button" id="button">Qidirish</button>
+
+            <form method="get" id="form">
+                <input style="margin-left: -100px;" id="input" type="text" name="search"
+                    placeholder="Iltimos, Sayohat qilmoqchi bo'lgan shahringiz nomini kiriting!">
+                <button type="submit" id="button1">Qidirish</button>
+            </form>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <section class="cards container" id="cards">
+
+            {% for city in cities %}
+
+            <a href="{% url 'city' city.id %}" style="color: black;" class="card">
+
+                {% if city.images.exists %}
+                <img src="{{ city.images.first.image.url }}" alt="image">
+                {% else %}
+                <img src="{{city.flag.url}}" alt="flag">
+                {% endif %}
+
+                <h3 class="country">Shahar nomi: {{city.name}}</h3>
+                <h3 class="country">Shahar aholishi: {{city.population}}</h3>
+                <h3 class="country">Shahar maydoni: {{city.area}}</h3>
+                <h3 class="country">Shahar tili: {{city.language}}</h3>
+
+            </a>
+
+            {% endfor %}
+
+        </section>
+
+    </main>
+
+    <script src="{% static 'js/home.js' %}"></script>
+
+</body>
+
+</html>

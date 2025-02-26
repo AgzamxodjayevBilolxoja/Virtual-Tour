@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Sayohat</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+    </style>
+</head>
+
+<body>
+
+
+        <nav class="container">
+
+            <a href="{% url 'home' %}">
+
+                <img src="{% static 'img/logo.png' %}" alt="">
+
+            </a>
+
+            <ul>
+
+                <li>
+
+                    <a href=""><b>Bloglar</b></a>
+
+                </li>
+
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'add_blog' %}">Blog Qo'shish</a></li>
+                <li>
+
+                    <a href="{% url 'change_user' %}">Profil</a>
+
+                </li>
+                {% else %}
+                <li>
+
+                    <a href="{% url 'register' %}">Registratsiya qilish</a>
+
+                </li>
+
+                <li>
+
+                    <a href="{% url 'login' %}">Profilga kirish</a>
+
+                </li>
+                {% endif %}
+
+            </ul>
+
+        </nav>
+
+    <main>
+
+        <section class="container">
+            <h2 style="margin-top: 25px; margin-bottom: 25px; font-size: 35px;">Rasmlar</h2>
+            <div style="display: flex; justify-content: space-between;" class="images">
+                {% for img in country.images.all %}
+                <img style="width: 500px;" src="{{img.image.url}}" alt="">
+                {% endfor %}
+            </div>
+        </section>
+
+        <section style="margin-top: 20px;" class="container" id="cards">
+
+            <img style="width: 500px;" src="{{country.flag.url}}" alt="">
+
+            <h3 class="country" style="font-size: 30px; margin-bottom: 15px;">{{country.name}} shahri</h3>
+            <h3 class="country" style="font-size: 30px; margin-bottom: 15px;">Aholisi {{country.population}} kishi</h3>
+            <h3 class="country" style="font-size: 30px; margin-bottom: 15px;">Maydoni {{country.area}} km kv</h3>
+            <h3 class="country" style="font-size: 30px; margin-bottom: 15px;">Asosiy tili - {{country.language}}</h3>
+
+        </section>
+
+    </main>
+
+    <script src="{% static 'js/home.js' %}"></script>
+
+</body>
+
+</html>

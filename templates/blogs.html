@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Sayohat</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+    </style>
+</head>
+
+<body>
+
+        <nav style="margin-top: 30px ;" class="container">
+
+            <a href="{% url 'home' %}">
+
+                <img src="{% static 'img/logo.png' %}" alt="">
+
+            </a>
+
+            <ul>
+
+                <li>
+
+                    <a href=""><b>Bloglar</b></a>
+
+                </li>
+
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'add_blog' %}">Blog Qo'shish</a></li>
+                <li>
+
+                    <a href="{% url 'change_user' %}">Profil</a>
+
+                </li>
+                {% else %}
+                <li>
+
+                    <a href="{% url 'register' %}">Registratsiya qilish</a>
+
+                </li>
+
+                <li>
+
+                    <a href="{% url 'login' %}">Profilga kirish</a>
+
+                </li>
+                {% endif %}
+
+            </ul>
+
+        </nav>
+
+    <main>
+
+        <section class="cards container" id="cards">
+
+            {% for blog in blogs %}
+
+            <a href="{% url 'blog' blog.id %}" style="color: black;" class="card">
+
+                {% if blog.images.exists %}
+                <img src="{{ blog.images.first.image.url }}" alt="image">
+                {% else %}
+                <img src="{{blog.flag.url}}" alt="flag">
+                {% endif %}
+
+                <h3 class="country">Blog nomi: {{blog.title}}</h3>
+                <h3 class="country">Blog haqda ma'lumot: {{blog.content}}</h3>
+                <h3 class="country">Blog qaysi shahar uchun: {{blog.city}}</h3>
+
+            </a>
+
+            {% endfor %}
+
+        </section>
+
+    </main>
+
+    <script src="{% static 'js/home.js' %}"></script>
+
+</body>
+
+</html>

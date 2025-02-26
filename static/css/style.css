@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+nav {
+    height: 100px;
+    border-radius: 100px;
+    border: 3px solid #545454;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav img {
+    width: 150px;
+    height: 80px;
+}
+
+nav ul {
+    width: 500px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav ul li a {
+    color: #545454;
+    font-size: 25px;
+}
+
+.search {
+    height: 615px;
+    margin-top: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 1200px;
+    position: relative;
+    display: none;
+}
+
+input {
+    width: 1200px;
+    height: 100px;
+    border-radius: 100px;
+    border: 3px solid #545454;
+    font-size: 30px;
+    padding-left: 20px;
+}
+
+input::placeholder {
+    color: gray;
+}
+
+.button {
+    width: 1200px;
+    height: 100px;
+    border-radius: 100px;
+    font-size: 30px;
+    background-color: rgb(225, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, width 0.3s ease-in-out;
+    border: none;
+}
+
+form button {
+    width: 200px;
+    height: 100px;
+    border-radius: 100px;
+    font-size: 30px;
+    background-color: rgb(225, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    right: 0;
+}
+
+.active {
+    width: 200px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.cards {
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 50px;
+}
+
+.card {
+    width: 350px;
+    height: 400px;
+    border: 3px solid #545454;
+}
+
+.card img {
+    width: 344px;
+    height: 250px;
+}
+
+.card h3 {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.ul {
+    width: 150px;
+}
+
+.submit {
+    width: 1200px;
+    position: relative;
+    height: 70px;
+}
+
+.register_div input {
+    font-size: 20px;
+}
