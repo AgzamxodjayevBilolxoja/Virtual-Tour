@@ -37,7 +37,7 @@
 
                 <li>
 
-                    <a href=""><b>Bloglar</b></a>
+                    <a href="{% url 'blogs' %}"><b>Bloglar</b></a>
 
                 </li>
 
@@ -72,9 +72,9 @@
 
         <section class="container">
             <h2 style="margin-top: 25px; margin-bottom: 25px; font-size: 35px;">Rasmlar</h2>
-            <div style="display: flex; justify-content: space-between;" class="images">
+            <div style="display: flex; flex-wrap: wrap; gap: 100px;" class="images">
                 {% for img in blog.images.all %}
-                <img style="width: 500px;" src="{{img.image.url}}" alt="">
+                <img style="width: 550px;" src="{{img.image.url}}" alt="">
                 {% endfor %}
             </div>
         </section>
